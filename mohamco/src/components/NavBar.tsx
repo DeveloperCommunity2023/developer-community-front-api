@@ -18,11 +18,12 @@ const NavBar = () => {
 
   }
 
-  const menuList = menus.map((menu, menu_link) => (<li><a href="#" onClick={menuClick} className="nav-link px-2"><span className="menu">{menu}</span></a></li>))
+  const menuList = menus.map((menu) => (<li><a href="#" onClick={menuClick} className="nav-link px-3"><span className="menu">{menu}</span></a></li>))
 
 return(
 <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      <div className="col-md-3 mb-2 mb-md-0">      
+  <nav className="mx-auto max-w-10x1 px-4 flex w-full d-flex justify-content-center">
+      <div className="col-md-3 mb-2 mb-md-0 align-self-center">      
         <a href="/" className="d-inline-flex link-body-emphasis text-decoration-none justify-content-center">
           <span className="logo mx-4">모함코</span>
         </a>
@@ -36,6 +37,7 @@ return(
         <button type="button" onClick={loginBtnClick} className="loginbtn btn btn-outline-secondary me-2">로그인</button>
         <button type="button" onClick={signUpBtnClick} className="signupbtn btn btn-primary">회원가입</button>
       </div>
+  </nav>
 </header>
 );
 }

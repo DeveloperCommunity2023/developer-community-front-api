@@ -1,6 +1,7 @@
 a .menu {
     font-weight: 700;
 }
+
 a:link .menu{
     color:black;
 }
