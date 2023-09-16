@@ -1,0 +1,43 @@
+a .menu {
+    font-weight: 700;
+}
+
+a:link .menu{
+    color:black;
+}
+a:visited .menu {
+    color: black;
+}
+a:hover .menu {
+    color: #C2B2DD;
+}
+a:active .menu {
+    color: black;
+}
+a:checked .menu {
+    color: red;
+}
+
+.logo {   
+    color: #797383;
+    font-weight: 700;
+    font-size: 22px;
+    
+}
+.loginbtn {
+    border-radius: 20px;
+    border-color: #BAC7CC;
+}
+.loginbtn:hover {
+    border-color: #A5B0B5;
+    background-color: #A5B0B5;
+}
+.signupbtn {
+    background-color: #C2B2DD;
+    border-color: #C2B2DD;
+    border-radius: 20px;
+}
+.signupbtn:hover {
+    border-color: #9F93B5;
+    background-color: #9F93B5;
+}
