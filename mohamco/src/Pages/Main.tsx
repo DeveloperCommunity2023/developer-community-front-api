@@ -6,15 +6,15 @@ export function Main() {
     const[data, setData] = useState();
 
     useEffect(() => {
-      getBoard().then((res) => {
-        // setData(res);
-        // console.log(data);
+      getBoard('B001').then((res) => {
+        setData(res);
+        console.log('data',res);
       })
-    })
+    },[])
 
 
     const list = ["test1sdfgsdfgsdff","test2sdfgsdfgsdfg","test3asdfasdfa","test4asdfsdf"];
-    const test = list.map((x) => (
+    const test = list.map((x,idx) => (
       <div>
         <ul className="px-2 py-1/3 divide-y divide-gray-500/30 dark:divide-gray-500/70 list-unstyled">
           <li><div className="mb-2 flex">{x}</div></li>
