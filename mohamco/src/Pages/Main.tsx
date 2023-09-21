@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/NavBar";
+import { getBoard } from "../Modules/board.service";
 
 export function Main() {
+    const[data, setData] = useState();
+
+    useEffect(() => {
+      getBoard().then((res) => {
+        // setData(res);
+        // console.log(data);
+      })
+    })
+
+
     const list = ["test1sdfgsdfgsdff","test2sdfgsdfgsdfg","test3asdfasdfa","test4asdfsdf"];
     const test = list.map((x) => (
       <div>
