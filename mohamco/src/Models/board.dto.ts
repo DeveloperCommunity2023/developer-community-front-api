@@ -2,10 +2,14 @@ export interface BoardDto {
   boardSeq: string,
   boardName: string,
   boardDesc: string,
-  userSeq: string,
-  userName: string,
-  profileImageUrl: string,
+  postList: PostList,
+}
+export interface PostList {
+  postSeq: string,
   title: string,
-  createdTs: string,
-  commentCount: number
+  userName: string,
+  userSeq: string,
+  createdDt: string,
+  likeCount: number,
+  viewCount: number
 }
