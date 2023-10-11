@@ -2,7 +2,7 @@ export interface BoardDto {
   boardSeq: string,
   boardName: string,
   boardDesc: string,
-  postList: PostList,
+  postList: PostList[],
 }
 export interface PostList {
   postSeq: string,
