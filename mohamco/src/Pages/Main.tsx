@@ -50,7 +50,16 @@ export function Main() {
             </div>
             <ul className="list-unstyled">
               {data?.postList.map((x, idx) => (
-                <li key={idx}>{x.title}</li>
+                <li key={idx}>
+                  <div>
+                    {x.userName}
+                    {x.createdDt}
+                  </div>
+                  <div >
+                    {x.title}
+                    <hr />
+                  </div>
+                  </li>
               ))}
             </ul>
           </div>
@@ -65,7 +74,16 @@ export function Main() {
             </div>
             <ul className="list-unstyled">
               {data2?.postList.map((x, idx) => (
-                <li key={idx}>{x.title}</li>
+                <li key={idx}>
+                <div>
+                  {x.userName}
+                  {x.createdDt}
+                </div>
+                <div >
+                  {x.title}
+                  <hr />
+                </div>
+                </li>
               ))}
             </ul>
           </div>
@@ -82,7 +100,16 @@ export function Main() {
             </div>
             <ul className="list-unstyled">
               {data3?.postList.map((x, idx) => (
-                <li key={idx}>{x.title}</li>
+                  <li key={idx}>
+                  <div>
+                    {x.userName}
+                    {x.createdDt}
+                  </div>
+                  <div >
+                    {x.title}
+                    <hr />
+                  </div>
+                  </li>
               ))}
             </ul>
           </div>
@@ -96,7 +123,16 @@ export function Main() {
             </div>
             <ul className="list-unstyled">
               {data4?.postList.map((x, idx) => (
-                <li key={idx}>{x.title}</li>
+                  <li key={idx}>
+                  <div>
+                    {x.userName}
+                    {x.createdDt}
+                  </div>
+                  <div >
+                    {x.title}
+                    <hr />
+                  </div>
+                  </li>
               ))}
             </ul>
           </div>
