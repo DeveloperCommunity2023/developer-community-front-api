@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "../styles/NavBar.css";
 
 const NavBar = () => {
@@ -10,9 +11,11 @@ const NavBar = () => {
     "프로젝트",
   ];
   const menu_link = ["#", "#", "#", "#", "#", "#"]; //메뉴 링크
+  const naviagate = useNavigate();
 
   function menuClick() {
     //메뉴 클릭 이벤트
+    naviagate("/board");
     console.log("test");
   }
 

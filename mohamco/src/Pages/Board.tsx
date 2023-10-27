@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/NavBar";
-import { Space, Table } from "antd";
+import { Button, Input, Select, Slider, Space, Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { Header } from "antd/es/layout/layout";
 
@@ -14,23 +14,23 @@ interface DataType {
 
 const columns: ColumnsType<DataType> = [
   {
-    title: "Name",
+    title: "번호",
     dataIndex: "name",
     key: "name",
     render: (text) => <a>{text}</a>,
   },
   {
-    title: "Age",
+    title: "제목",
     dataIndex: "age",
     key: "age",
   },
   {
-    title: "Address",
+    title: "작성자",
     dataIndex: "address",
     key: "address",
   },
   {
-    title: "Tags",
+    title: "작성일",
     key: "tags",
     dataIndex: "tags",
     // render: (_, { tags }) => (
@@ -50,7 +50,16 @@ const columns: ColumnsType<DataType> = [
     // ),
   },
   {
-    title: "Action",
+    title: "조회수",
+    key: "action",
+    render: (_, record) => (
+      <Space size="middle">
+        <a>Invite {record.name}</a>
+      </Space>
+    ),
+  },
+  {
+    title: "좋아요수",
     key: "action",
     render: (_, record) => (
       <Space size="middle">
@@ -94,6 +103,7 @@ const App: React.FC = () => (
       </div>
       <div>임시 게시판설명~~</div>
       <br />
+
       <Table
         columns={columns}
         dataSource={data}
@@ -104,6 +114,15 @@ const App: React.FC = () => (
           // pageSizeOptions: ["10", "20", "50", "100", "200"],
         }}
       />
+      <div>
+        <Button />
+      </div>
+
+      <span>
+        <Select />
+        <Select />
+        <Input />
+      </span>
     </div>
   </>
 );
