@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Main } from "./Pages/Main";
-import Board from "./Pages/Board";
 import { StudyCreate } from "./Pages/StudyCreate";
 import { Study } from "./Pages/Study";
+import { Board } from "./Pages/Board";
 
 function App() {
   return (
