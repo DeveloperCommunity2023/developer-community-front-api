@@ -1,14 +1,28 @@
 import NavBar from "../components/NavBar";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { Avatar, Card, Select, Input, Button } from "antd";
+import { useEffect, useState } from "react";
+import { StudyDto } from "../Models/stydy,dto";
+import { getStudy } from "../Modules/study.service";
 
 export function Study() {
   const { Meta } = Card;
+  const [data, setData] = useState<StudyDto>();
 
+  useEffect(() => {
+    init();
+  }, []);
+
+  const init = () => {
+    getStudy().then((res) => {
+      setData(res);
+    });
+  };
+  console.log("ss", data);
+  console.log("ss1", data?.studyList);
   return (
     <>
       <NavBar></NavBar>
-
       <div>
         <div>
           <h4>스터디 모임</h4>
@@ -24,6 +38,8 @@ export function Study() {
           <Button type="primary">검색</Button>
         </div>
       </div>
+      {/* {data && data.studyList.map((x, idx) => {
+          <div>{idx}</div>; */}
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Card
           style={{ width: 300 }}
@@ -38,8 +54,8 @@ export function Study() {
             avatar={
               <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
             }
-            title="스터디 이름"
-            description="스터디 설명"
+            // title={x.studyName}
+            // description={x.studyDesc}
           />
           <div>여기에 태그 넣고</div>
           <div style={{ textAlign: "right" }}>
@@ -48,6 +64,7 @@ export function Study() {
           </div>
         </Card>
       </div>
+      ;{/* })} */}
     </>
   );
 }
