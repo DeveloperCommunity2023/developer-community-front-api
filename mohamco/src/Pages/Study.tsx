@@ -11,13 +11,12 @@ import {
   Pagination,
 } from "antd";
 import { useEffect, useState } from "react";
-import { StudyList } from "../Models/stydy,dto";
 import { getStudy } from "../Modules/study.service";
-import { Footer } from "antd/es/layout/layout";
+import { StudyList } from "../Models/stydy,dto";
 
 export function Study() {
   const { Meta } = Card;
-  const [data, setData] = useState<any[]>([]);
+  const [data, setData] = useState<StudyList[]>([]);
 
   useEffect(() => {
     init();
