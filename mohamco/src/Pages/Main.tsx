@@ -20,7 +20,7 @@ export function Main() {
   const init = () => {
     for (let i = 0; i < boardData.length; i++) {
       getBoard(boardData[i]).then((res) => {
-        boardSaveData[i](res.data);
+        boardSaveData[i](res);
       });
     }
   };
