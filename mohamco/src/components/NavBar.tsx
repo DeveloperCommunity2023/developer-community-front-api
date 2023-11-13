@@ -3,21 +3,15 @@ import "../styles/NavBar.css";
 
 const NavBar = () => {
   const menus = [
-    "자유게시판",
-    "질문게시판",
-    "모집게시판",
-    "정보게시판",
-    "스터디",
-    "프로젝트",
+    {"boardName": "자유게시판", "link": "/board/B001"},
+    {"boardName": "질문게시판", "link": "/board/B002"},
+    {"boardName": "모집게시판", "link": "/board/B003"},
+    {"boardName": "정보게시판", "link": "/bpard/B004"},
+    {"boardName": "스터디", "link": "/study"},
+    {"boardName": "프로젝트", "link": "/project"},
   ];
-  const menu_link = ["#", "#", "#", "#", "#", "#"]; //메뉴 링크
-  const naviagate = useNavigate();
 
-  function menuClick() {
-    //메뉴 클릭 이벤트
-    naviagate("/board");
-    console.log("test");
-  }
+  const naviagate = useNavigate();
 
   function loginBtnClick() {
     //로그인 버튼 클릭 이벤트
@@ -29,8 +23,8 @@ const NavBar = () => {
 
   const menuList = menus.map((menu) => (
     <li>
-      <a href="#" onClick={menuClick} className="nav-link px-3">
-        <span className="menu">{menu}</span>
+      <a href={`${menu.link}`} className="nav-link px-3">
+        <span className="menu">{menu.boardName}</span>
       </a>
     </li>
   ));
