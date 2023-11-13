@@ -5,6 +5,7 @@ import { Main } from "./Pages/Main";
 import { StudyCreate } from "./Pages/StudyCreate";
 import { Study } from "./Pages/Study";
 import { Board } from "./Pages/Board";
+import { BoardWrite } from "./Pages/BoardWrite";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/board" element={<Board />} />
+          <Route path="/board/write" element={<BoardWrite />} />
           <Route path="/study" element={<Study />} />
           <Route path="/study/create" element={<StudyCreate />} />
         </Routes>
