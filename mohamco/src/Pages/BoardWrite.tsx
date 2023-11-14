@@ -5,6 +5,9 @@ import { SizeType } from "antd/es/config-provider/SizeContext";
 import TextArea from "antd/es/input/TextArea";
 import axios from "axios";
 
+const baseUrl = "http://localhost:8081";
+const config = {"Content-Type": 'application/json'};
+
 
 export function BoardWrite() {
     const [modal1Open, setModal1Open] = useState(false);
@@ -33,10 +36,24 @@ export function BoardWrite() {
             setModal1Open(true)
             setModalMessage('내용을 입력해주세요.');
         }
-        // axios.post('localhost:8081/api/post')
-        // .then(res=>{
-        //     const data = res.data;
-        // })
+        axios.post(baseUrl + '/api/v1/board/posts', {       //등록 요청
+            boardSeq: 'B001',    //게시판 아이디 (선택한 게시판 아이디 들어가야하고요)
+            title: title,
+            content: content,
+            noticeYn: 0,
+            userSeq: 125,     //유저 시퀀스
+            userName: '박모래'    //유저 이름
+        }, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(res=>{
+            console.log("실행됨요");
+            const data = res.data;
+        }).catch((err)=>{
+            console.log(err);
+        })
     }
  
     return (
