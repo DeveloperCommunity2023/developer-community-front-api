@@ -1,17 +1,43 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/NavBar";
-import { Button, Select } from "antd";
+import { Button, Modal, Select } from "antd";
 import { SizeType } from "antd/es/config-provider/SizeContext";
 import TextArea from "antd/es/input/TextArea";
+import axios from "axios";
 
-const handleChange = (value: string) => {
-    console.log(`selected ${value}`);
-  };
 
 export function BoardWrite() {
+    const [modal1Open, setModal1Open] = useState(false);
+    const [modal2Open, setModal2Open] = useState(false);
+    const [modalMessage, setModalMessage] = useState('');
 
     const [size, setSize] = useState<SizeType>('large');
-    const [value, setValue] = useState('');
+    const [board, setBoard] = useState('');
+    const [title, setTitle] = useState('');
+    const [content, setcontent] = useState('');
+
+
+    const handleChange = (value: string) => {   //게시판 선택
+        console.log(`selected ${value}`);
+        setBoard(value);
+      };
+
+    const postButtonClick = () => {             //등록 버튼 클릭
+        if(board == ''){
+            setModal1Open(true)
+            setModalMessage('게시판을 선택해주세요.');
+        }else if (title == ''){
+            setModal1Open(true)
+            setModalMessage('제목을 입력해주세요.');
+        }else if(content == ''){
+            setModal1Open(true)
+            setModalMessage('내용을 입력해주세요.');
+        }
+        // axios.post('localhost:8081/api/post')
+        // .then(res=>{
+        //     const data = res.data;
+        // })
+    }
  
     return (
         <div>
@@ -36,19 +62,28 @@ export function BoardWrite() {
                         ]}
                     />
                     <div style={{ margin: '10px 0' }} />
-                    <TextArea placeholder="제목"
+                    <TextArea value={title} onChange={(e)=> setTitle(e.target.value)} placeholder="제목"
                     autoSize={{maxRows: 1}}></TextArea>
                     <div style={{ margin: '10px 0' }} />
-                    <TextArea value={value} 
-                    onChange={(e)=> setValue(e.target.value)} 
+                    <TextArea value={content} 
+                    onChange={(e)=> setcontent(e.target.value)} 
                     placeholder="내용을 입력해주세요." 
                     autoSize={{minRows: 20, maxRows: 100}}>
                     </TextArea>
                     <div style={{ margin: '10px 0' }} />
                     <div>
-                        <Button style={{float: "right", background:"rgb(194,178,208)"}} type="primary" size={size}>
+                        <Button onClick={postButtonClick} style={{float: "right", background:"rgb(194,178,208)"}} type="primary" size={size}>
                             등록
                         </Button>
+                        <Modal
+                            title="알림"
+                            style={{ top: 20 }}
+                            open={modal1Open}
+                            onOk={() => setModal1Open(false)}
+                            onCancel={() => setModal1Open(false)}
+                        >
+                        <p>{modalMessage}</p>
+                        </Modal>
                     </div>
                 </div>
             </div>        
