@@ -3,6 +3,7 @@ import Navbar from "../components/NavBar";
 import { getBoard } from "../Modules/board.service";
 import { BoardDto } from "../Models/board.dto";
 import { Avatar, Col, List, Row } from "antd";
+import { FaRegCommentDots } from "react-icons/fa";
 
 export function Main() {
   const [data, setData] = useState<BoardDto>();
@@ -33,7 +34,14 @@ export function Main() {
       <Row>
         {dataList.map((x) => (
           <Col span={12}>
-            <div style={{ marginTop: "30px" }}>
+            <div
+              style={{
+                padding: "15px",
+                backgroundColor: "#EAE4F5",
+                borderRadius: "10px",
+                width: "400px",
+              }}
+            >
               <h4>
                 <strong>{x?.boardName}</strong>
               </h4>
@@ -50,10 +58,42 @@ export function Main() {
                     avatar={
                       <Avatar
                         src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`}
+                        size={"small"}
                       />
                     }
-                    title={<a href="https://ant.design">{item.title}</a>}
-                    description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                    title={
+                      <a
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: "12px",
+                          textDecoration: "none",
+                        }}
+                        href="https://ant.design"
+                      >
+                        {item.userName}
+                        <span
+                          style={{
+                            float: "right",
+                          }}
+                        >
+                          <FaRegCommentDots />
+                          <text style={{ marginLeft: "2px" }}>
+                            {" "}
+                            {item.likeCount}
+                          </text>
+                        </span>
+                      </a>
+                    }
+                    description={
+                      <div
+                        style={{
+                          fontWeight: "500",
+                          color: "#707070",
+                        }}
+                      >
+                        {item.title}
+                      </div>
+                    }
                   />
                 </List.Item>
               )}

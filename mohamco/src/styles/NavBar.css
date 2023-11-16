@@ -1,43 +1,42 @@
 a .menu {
-    font-weight: 700;
+  font-weight: 700;
 }
 
-a:link .menu{
-    color:black;
+a:link .menu {
+  color: black;
 }
 a:visited .menu {
-    color: black;
+  color: black;
 }
 a:hover .menu {
-    color: #C2B2DD;
+  color: #c2b2dd;
 }
 a:active .menu {
-    color: black;
+  color: black;
 }
 a:checked .menu {
-    color: red;
+  color: red;
 }
 
-.logo {   
-    color: #797383;
-    font-weight: 700;
-    font-size: 22px;
-    
+.logo {
+  color: #797383;
+  font-weight: 700;
+  font-size: 22px;
 }
 .loginbtn {
-    border-radius: 20px;
-    border-color: #BAC7CC;
+  border-radius: 20px;
+  border-color: #bac7cc;
 }
 .loginbtn:hover {
-    border-color: #A5B0B5;
-    background-color: #A5B0B5;
+  border-color: #a5b0b5;
+  background-color: #a5b0b5;
 }
 .signupbtn {
-    background-color: #C2B2DD;
-    border-color: #C2B2DD;
-    border-radius: 20px;
+  background-color: #c2b2dd;
+  border-color: #c2b2dd;
+  border-radius: 20px;
 }
 .signupbtn:hover {
-    border-color: #9F93B5;
-    background-color: #9F93B5;
+  border-color: #9f93b5;
+  background-color: #9f93b5;
 }
