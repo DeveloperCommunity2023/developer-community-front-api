@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Navbar from "../components/NavBar";
-import { Button, Input, Select, Slider, Space, Table } from "antd";
+import { Button, Input, Select, Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { getBoard } from "../Modules/board.service";
 import { BoardDto, DataType } from "../Models/board.dto";
@@ -8,6 +9,8 @@ import { BoardDto, DataType } from "../Models/board.dto";
 export function Board() {
   const [board, setBoard] = useState<BoardDto>();
   let date = new Date(2023, 11, 12);
+  const { boardSeq } = useParams();
+  console.log("boardSeq", boardSeq);
 
   useEffect(() => {
     init();
