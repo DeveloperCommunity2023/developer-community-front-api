@@ -3,12 +3,12 @@ import "../styles/NavBar.css";
 
 const NavBar = () => {
   const menus = [
-    {"boardName": "자유게시판", "link": "/board/B001"},
-    {"boardName": "질문게시판", "link": "/board/B002"},
-    {"boardName": "모집게시판", "link": "/board/B003"},
-    {"boardName": "정보게시판", "link": "/bpard/B004"},
-    {"boardName": "스터디", "link": "/study"},
-    {"boardName": "프로젝트", "link": "/project"},
+    { boardName: "자유게시판", link: "/board/B001" },
+    { boardName: "질문게시판", link: "/board/B002" },
+    { boardName: "모집게시판", link: "/board/B003" },
+    { boardName: "정보게시판", link: "/board/B004" },
+    { boardName: "스터디", link: "/study" },
+    { boardName: "프로젝트", link: "/project" },
   ];
 
   const naviagate = useNavigate();

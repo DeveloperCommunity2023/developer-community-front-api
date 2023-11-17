@@ -1,107 +1,98 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Navbar from "../components/NavBar";
-import { Button, Input, Select, Slider, Space, Table } from "antd";
+import { Button, Input, Select, Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
+import { getBoard } from "../Modules/board.service";
+import { BoardDto, DataType } from "../Models/board.dto";
 
 export function Board() {
-  interface DataType {
-    key: string;
-    name: string;
-    age: number;
-    address: string;
-    tags: string[];
-  }
+  const [board, setBoard] = useState<BoardDto>();
+  let date = new Date(2023, 11, 12);
+  const { boardSeq } = useParams();
+  console.log("boardSeq", boardSeq);
+
+  useEffect(() => {
+    init();
+  }, []);
+
+  const init = () => {
+    getBoard("B001").then((res) => {
+      setBoard(res);
+      console.log("d", res);
+    });
+  };
 
   const columns: ColumnsType<DataType> = [
     {
       title: "번호",
-      dataIndex: "name",
-      key: "name",
-      render: (text) => <a>{text}</a>,
+      dataIndex: "postSeq",
+      key: "postSeq",
     },
     {
       title: "제목",
-      dataIndex: "age",
-      key: "age",
+      key: "title",
+      dataIndex: "title",
     },
     {
       title: "작성자",
-      dataIndex: "address",
-      key: "address",
+      key: "userName",
+      dataIndex: "userName",
     },
     {
       title: "작성일",
-      key: "tags",
-      dataIndex: "tags",
-      // render: (_, { tags }) => (
-      //   <>
-      //     {tags.map((tag) => {
-      //       let color = tag.length > 5 ? "geekblue" : "green";
-      //       if (tag === "loser") {
-      //         color = "volcano";
-      //       }
-      //       return (
-      //         <Tag color={color} key={tag}>
-      //           {tag.toUpperCase()}
-      //         </Tag>
-      //       );
-      //     })}
-      //   </>
-      // ),
+      key: "createdTs",
+      dataIndex: "createdTs",
     },
     {
       title: "조회수",
-      key: "action",
-      render: (_, record) => (
-        <Space size="middle">
-          <a>Invite {record.name}</a>
-        </Space>
-      ),
+      key: "viewCount",
+      dataIndex: "viewCount",
     },
     {
       title: "좋아요수",
-      key: "action",
-      render: (_, record) => (
-        <Space size="middle">
-          <a>Invite {record.name}</a>
-        </Space>
-      ),
+      key: "likeCount",
+      dataIndex: "likeCount",
     },
   ];
 
   const data: DataType[] = [
     {
-      key: "1",
-      name: "John Brown",
-      age: 32,
-      address: "New York No. 1 Lake Park",
-      tags: ["nice", "developer"],
+      postSeq: 1,
+      userName: "John Brown",
+      title: "테스트1",
+      createdTs: date,
+      viewCount: 1,
+      likeCount: 1,
     },
     {
-      key: "2",
-      name: "Jim Green",
-      age: 42,
-      address: "London No. 1 Lake Park",
-      tags: ["loser"],
+      postSeq: 2,
+      userName: "John Brown",
+      title: "테스트2",
+      createdTs: date,
+      viewCount: 2,
+      likeCount: 1,
     },
     {
-      key: "3",
-      name: "Joe Black",
-      age: 32,
-      address: "Sydney No. 1 Lake Park",
-      tags: ["cool", "teacher"],
+      postSeq: 3,
+      userName: "John Brown",
+      title: "테스트3",
+      createdTs: date,
+      viewCount: 3,
+      likeCount: 3,
     },
   ];
-
   return (
     <>
       <Navbar></Navbar>
 
       <div style={{ width: "75%", margin: "3rem auto" }}>
         <div>
-          <strong>임시 게시판</strong>
+          <h4>
+            <strong>{board && board.boardName}</strong>
+          </h4>
         </div>
-        <div>임시 게시판설명~~</div>
+        <div>{board && board.boardDesc}</div>
         <br />
 
         <Table
@@ -114,15 +105,43 @@ export function Board() {
             // pageSizeOptions: ["10", "20", "50", "100", "200"],
           }}
         />
-        <div>
-          <Button />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "right",
+          }}
+        >
+          <Button type="primary">글쓰기</Button>
         </div>
 
-        <span>
-          <Select />
-          <Select />
-          <Input />
-        </span>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <Select
+            defaultValue={"전체기간"}
+            value={"전체기간"}
+            placeholder="전체기간"
+          >
+            <Select.Option value="전체기간">전체기간</Select.Option>
+          </Select>
+          <Select
+            defaultValue={"게시글+댓글"}
+            value={"게시글+댓글"}
+            placeholder="게시글+댓글"
+          >
+            <Select.Option value="게시글+댓글">게시글+댓글</Select.Option>
+          </Select>
+          <Input
+            style={{
+              width: "fit-content",
+            }}
+            placeholder="검색어를 입력해주세요"
+          />
+          <Button type="primary"></Button>
+        </div>
       </div>
     </>
   );
