@@ -13,10 +13,13 @@ import {
 import { useEffect, useState } from "react";
 import { getStudy } from "../Modules/study.service";
 import { StudyList } from "../Models/stydy,dto";
+import { useNavigate } from "react-router-dom";
 
 export function Study() {
   const { Meta } = Card;
   const [data, setData] = useState<StudyList[]>([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     init();
@@ -102,7 +105,13 @@ export function Study() {
         style={{ display: "flex", justifyContent: "center", marginBottom: 10 }}
       >
         <Pagination defaultCurrent={1} />
-        <Button style={{ position: "absolute", right: 50 }} type="primary">
+        <Button
+          style={{ position: "absolute", right: 50 }}
+          type="primary"
+          onClick={() => {
+            navigate("/study/create");
+          }}
+        >
           생성하기
         </Button>
       </div>

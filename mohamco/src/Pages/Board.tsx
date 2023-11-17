@@ -4,84 +4,73 @@ import Navbar from "../components/NavBar";
 import { Button, Input, Select, Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
 import { getBoard } from "../Modules/board.service";
-import { BoardDto, DataType } from "../Models/board.dto";
+import { BoardDto, ColumnType } from "../Models/board.dto";
 
 export function Board() {
   const [board, setBoard] = useState<BoardDto>();
+  const [data, setData] = useState();
+
   let date = new Date(2023, 11, 12);
+
   const { boardSeq } = useParams();
-  console.log("boardSeq", boardSeq);
 
   useEffect(() => {
     init();
   }, []);
 
   const init = () => {
-    getBoard("B001").then((res) => {
+    getBoard(boardSeq!).then((res) => {
       setBoard(res);
-      console.log("d", res);
+      setData(res.postList);
     });
   };
 
-  const columns: ColumnsType<DataType> = [
+  const columns: ColumnsType<ColumnType> = [
+    // 테이블 헤더
     {
       title: "번호",
       dataIndex: "postSeq",
       key: "postSeq",
+      align: "center",
+      width: "5%",
     },
     {
       title: "제목",
       key: "title",
       dataIndex: "title",
+      align: "center",
+      width: "25%",
     },
     {
       title: "작성자",
       key: "userName",
       dataIndex: "userName",
+      align: "center",
+      width: "10%",
     },
     {
       title: "작성일",
       key: "createdTs",
       dataIndex: "createdTs",
+      align: "center",
+      width: "10%",
     },
     {
       title: "조회수",
       key: "viewCount",
       dataIndex: "viewCount",
+      align: "center",
+      width: "5%",
     },
     {
       title: "좋아요수",
       key: "likeCount",
       dataIndex: "likeCount",
+      align: "center",
+      width: "5%",
     },
   ];
 
-  const data: DataType[] = [
-    {
-      postSeq: 1,
-      userName: "John Brown",
-      title: "테스트1",
-      createdTs: date,
-      viewCount: 1,
-      likeCount: 1,
-    },
-    {
-      postSeq: 2,
-      userName: "John Brown",
-      title: "테스트2",
-      createdTs: date,
-      viewCount: 2,
-      likeCount: 1,
-    },
-    {
-      postSeq: 3,
-      userName: "John Brown",
-      title: "테스트3",
-      createdTs: date,
-      viewCount: 3,
-      likeCount: 3,
-    },
-  ];
   return (
     <>
       <Navbar></Navbar>
