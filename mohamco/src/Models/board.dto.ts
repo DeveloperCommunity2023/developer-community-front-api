@@ -30,3 +30,12 @@ export interface ColimnType {
   address: string;
   tags: string[];
 }
+
+export interface Post{
+  boardSeq: string,
+  title: string,
+  content: string,
+  noticeYn: number,
+  userSeq: number,
+  userName: string
+}

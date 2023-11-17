@@ -4,6 +4,7 @@ import { Button, Modal, Select } from "antd";
 import { SizeType } from "antd/es/config-provider/SizeContext";
 import TextArea from "antd/es/input/TextArea";
 import axios from "axios";
+import { boardWrite } from "../Modules/board.service";
 
 const baseUrl = "http://localhost:8081";
 const config = {"Content-Type": 'application/json'};
@@ -15,45 +16,39 @@ export function BoardWrite() {
     const [modalMessage, setModalMessage] = useState('');
 
     const [size, setSize] = useState<SizeType>('large');
-    const [board, setBoard] = useState('');
-    const [title, setTitle] = useState('');
-    const [content, setcontent] = useState('');
-
+    
+    const [post, setPost] =useState({
+        boardSeq: '', 
+        title: '', 
+        content: '',
+        noticeYn: 0,
+        userSeq: 125,        //후에 userSeq, userName 넣어놔야함
+        userName: '박모래'
+    });
+    
 
     const handleChange = (value: string) => {   //게시판 선택
-        console.log(`selected ${value}`);
-        setBoard(value);
+        setPost({...post, boardSeq: value});
       };
 
     const postButtonClick = () => {             //등록 버튼 클릭
-        if(board == ''){
+        if(post.boardSeq == ''){
             setModal1Open(true)
             setModalMessage('게시판을 선택해주세요.');
-        }else if (title == ''){
+        }else if (post.title == ''){
             setModal1Open(true)
             setModalMessage('제목을 입력해주세요.');
-        }else if(content == ''){
+        }else if(post.content == ''){
             setModal1Open(true)
             setModalMessage('내용을 입력해주세요.');
-        }
-        axios.post(baseUrl + '/api/v1/board/posts', {       //등록 요청
-            boardSeq: 'B001',    //게시판 아이디 (선택한 게시판 아이디 들어가야하고요)
-            title: title,
-            content: content,
-            noticeYn: 0,
-            userSeq: 125,     //유저 시퀀스
-            userName: '박모래'    //유저 이름
-        }, {
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        .then(res=>{
-            console.log("실행됨요");
-            const data = res.data;
-        }).catch((err)=>{
-            console.log(err);
-        })
+        }else{
+            boardWrite(post)                //axios 등록 요청
+            .then(res=>{
+                console.log(res)
+            }).catch((err)=>{
+                console.log(err)
+            });
+        }  
     }
  
     return (
@@ -71,19 +66,25 @@ export function BoardWrite() {
                         style={{ width: 230 }}
                         onChange={handleChange}
                         options={[
-                        { value: '자유게시판', label: '자유게시판' },
-                        { value: '질문게시판', label: '질문게시판' },
-                        { value: '모집게시판', label: '모집게시판' },
-                        { value: '정보게시판', label: '정보게시판' },
+                        { value: 'B001', label: '자유게시판' },
+                        { value: 'B002', label: '질문게시판' },
+                        { value: 'B003', label: '모집게시판' },
+                        { value: 'B004', label: '정보게시판' },
                         { value: 'disabled', label: 'Disabled', disabled: true },
                         ]}
                     />
                     <div style={{ margin: '10px 0' }} />
-                    <TextArea value={title} onChange={(e)=> setTitle(e.target.value)} placeholder="제목"
+                    <TextArea onChange={(e)=> {
+                        setPost({
+                            ...post,
+                            title: e.target.value})}} placeholder="제목"
                     autoSize={{maxRows: 1}}></TextArea>
                     <div style={{ margin: '10px 0' }} />
-                    <TextArea value={content} 
-                    onChange={(e)=> setcontent(e.target.value)} 
+                    <TextArea 
+                    onChange={(e)=> {
+                        setPost({
+                        ...post,
+                        content: e.target.value})}}
                     placeholder="내용을 입력해주세요." 
                     autoSize={{minRows: 20, maxRows: 100}}>
                     </TextArea>
