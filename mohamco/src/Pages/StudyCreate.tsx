@@ -2,8 +2,8 @@ import NavBar from "../components/NavBar";
 import { Button, Form, Input, Radio, Select } from "antd";
 
 export function StudyCreate() {
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
+  const onFinish = () => {
+    console.log("Success");
   };
 
   const onFinishFailed = (errorInfo: any) => {
@@ -100,20 +100,14 @@ export function StudyCreate() {
               <Form.Item
                 label="스터디 인원"
                 name="studyCount"
-                rules={[{ required: true }]}
+                // rules={[{ required: true }]}
               >
                 <Select defaultValue={5} value={5} placeholder="5">
                   <Select.Option value="5">5</Select.Option>
                 </Select>
               </Form.Item>
 
-              <Form.Item<FieldType>
-                label="검색어 태그"
-                name="tag"
-                rules={[
-                  { required: true, message: "Please input your password!" },
-                ]}
-              >
+              <Form.Item<FieldType> label="검색어 태그" name="tag">
                 <div style={{ display: "inline-flex" }}>
                   <Input style={{ marginRight: "10px" }} />
                   <Button type="primary">등록</Button>
@@ -134,7 +128,13 @@ export function StudyCreate() {
                   취소
                 </Button>
 
-                <Button type="primary" htmlType="submit">
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  onClick={() => {
+                    onFinish();
+                  }}
+                >
                   등록
                 </Button>
               </Form.Item>

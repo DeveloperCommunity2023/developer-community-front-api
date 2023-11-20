@@ -12,7 +12,7 @@ import {
 } from "antd";
 import { useEffect, useState } from "react";
 import { getStudy } from "../Modules/study.service";
-import { StudyList } from "../Models/stydy,dto";
+import { StudyList } from "../Models/stydy.dto";
 import { useNavigate } from "react-router-dom";
 
 export function Study() {
@@ -109,7 +109,7 @@ export function Study() {
           style={{ position: "absolute", right: 50 }}
           type="primary"
           onClick={() => {
-            navigate("/study/create");
+            navigate("/study/create"); // 스터디 생성하기 페이지로 이동
           }}
         >
           생성하기
