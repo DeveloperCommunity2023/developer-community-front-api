@@ -4,6 +4,7 @@ import "./App.css";
 import { Main } from "./Pages/Main";
 import { StudyCreate } from "./Pages/StudyCreate";
 import { Study } from "./Pages/Study";
+import { Project } from "./Pages/Project";
 import { Board } from "./Pages/Board";
 import { Profile } from "./Pages/Profile";
 import { BoardWrite } from "./Pages/BoardWrite";
@@ -18,6 +19,7 @@ function App() {
           <Route path="/board/write" element={<BoardWrite />} />
           <Route path="/study" element={<Study />} />
           <Route path="/study/create" element={<StudyCreate />} />
+          <Route path="/project" element={<Project />} />
           <Route path="/test" element={<Profile />} />
         </Routes>
       </Router>

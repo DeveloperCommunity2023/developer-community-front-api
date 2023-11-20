@@ -3,7 +3,6 @@ import Navbar from "../components/NavBar";
 import { Button, Modal, Select } from "antd";
 import { SizeType } from "antd/es/config-provider/SizeContext";
 import TextArea from "antd/es/input/TextArea";
-import axios from "axios";
 import { boardWrite } from "../Modules/board.service";
 
 const baseUrl = "http://localhost:8081";
