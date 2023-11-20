@@ -1,19 +1,23 @@
+import { useState } from "react";
 import NavBar from "../components/NavBar";
 import { Button, Form, Input, Radio, Select } from "antd";
+import { studyCreate } from "../Modules/study.service";
 
 export function StudyCreate() {
-  const onFinish = () => {
-    console.log("Success");
+  const [form] = Form.useForm();
+
+  const onFinish = (values: any) => {
+    studyCreate(values) //axios 등록 요청
+      .then((res) => {
+        console.log("success", res);
+      })
+      .catch((err) => {
+        console.log("fail", err);
+      });
   };
 
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
-  };
-
-  type FieldType = {
-    studyName?: string;
-    studyDesc?: string;
-    tag?: string;
   };
 
   return (
@@ -47,7 +51,7 @@ export function StudyCreate() {
           >
             <br />
             <Form
-              name="basic"
+              name="myForm"
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}
               style={{ maxWidth: 600 }}
@@ -55,8 +59,10 @@ export function StudyCreate() {
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
               autoComplete="off"
+              form={form}
             >
-              <Form.Item<FieldType>
+              <Form.Item name="studySeq" hidden={true}></Form.Item>
+              <Form.Item
                 label="스터디 이름"
                 name="studyName"
                 rules={[
@@ -66,7 +72,7 @@ export function StudyCreate() {
                 <Input />
               </Form.Item>
 
-              <Form.Item<FieldType>
+              <Form.Item
                 label="스터디 설명"
                 name="studyDesc"
                 rules={[
@@ -81,8 +87,8 @@ export function StudyCreate() {
                 rules={[{ required: true }]}
               >
                 <Radio.Group>
-                  <Radio value="apple"> 공개 </Radio>
-                  <Radio value="pear"> 비공개 </Radio>
+                  <Radio value="0"> 공개 </Radio>
+                  <Radio value="1"> 비공개 </Radio>
                 </Radio.Group>
               </Form.Item>
 
@@ -92,8 +98,8 @@ export function StudyCreate() {
                 rules={[{ required: true }]}
               >
                 <Radio.Group>
-                  <Radio value="apple"> 자동 가입 </Radio>
-                  <Radio value="pear"> 승인 가입 </Radio>
+                  <Radio value="0"> 자동 가입 </Radio>
+                  <Radio value="1"> 승인 가입 </Radio>
                 </Radio.Group>
               </Form.Item>
 
@@ -107,7 +113,7 @@ export function StudyCreate() {
                 </Select>
               </Form.Item>
 
-              <Form.Item<FieldType> label="검색어 태그" name="tag">
+              <Form.Item label="검색어 태그" name="tag">
                 <div style={{ display: "inline-flex" }}>
                   <Input style={{ marginRight: "10px" }} />
                   <Button type="primary">등록</Button>
@@ -128,13 +134,7 @@ export function StudyCreate() {
                   취소
                 </Button>
 
-                <Button
-                  type="primary"
-                  htmlType="submit"
-                  onClick={() => {
-                    onFinish();
-                  }}
-                >
+                <Button form="myForm" type="primary" htmlType="submit">
                   등록
                 </Button>
               </Form.Item>
