@@ -58,7 +58,7 @@ export function BoardWrite() {
         style={{ maxWidth: "45%", minWidth: "300px" }}
       >
         <div className="writebody">
-          <text>글쓰기</text>
+          <div>글쓰기</div>
           <hr></hr>
           <div style={{ margin: "10px 0" }} />
           <Select

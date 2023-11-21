@@ -88,6 +88,7 @@ export function Board() {
           columns={columns}
           dataSource={data}
           size="middle"
+          rowKey="postSeq"
           pagination={{
             position: ["bottomCenter"],
             // showSizeChanger: true,

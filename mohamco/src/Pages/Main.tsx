@@ -36,8 +36,8 @@ export function Main() {
         style={{ maxWidth: "45%", minWidth: "300px" }}
       >
         <Row>
-          {dataList.map((x) => (
-            <Col span={12}>
+          {dataList.map((x, idx) => (
+            <Col span={12} key={idx}>
               <div
                 style={{
                   padding: "12px",
@@ -57,7 +57,7 @@ export function Main() {
                 size="small"
                 pagination={false}
                 renderItem={(item, index) => (
-                  <List.Item>
+                  <List.Item key={item.postSeq}>
                     <List.Item.Meta
                       avatar={
                         <Avatar
@@ -81,10 +81,10 @@ export function Main() {
                             }}
                           >
                             <FaRegCommentDots />
-                            <text style={{ marginLeft: "2px" }}>
+                            <div style={{ marginLeft: "2px" }}>
                               {" "}
                               {item.commentCount}
-                            </text>
+                            </div>
                           </span>
                         </a>
                       }

@@ -29,9 +29,9 @@ export function StudyCreate() {
           <h4>
             <strong>스터디 생성하기</strong>
           </h4>
-          <text style={{ color: "gray", fontSize: "14px" }}>
+          <div style={{ color: "gray", fontSize: "14px" }}>
             스터디 생성을 위한 정보를 입력해주세요
-          </text>
+          </div>
         </div>
 
         <div
@@ -55,13 +55,9 @@ export function StudyCreate() {
               labelCol={{ span: 8 }}
               wrapperCol={{ span: 16 }}
               style={{ maxWidth: 600 }}
-              initialValues={{ remember: true }}
               onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
-              autoComplete="off"
               form={form}
             >
-              <Form.Item name="studySeq" hidden={true}></Form.Item>
               <Form.Item
                 label="스터디 이름"
                 name="studyName"
@@ -108,7 +104,7 @@ export function StudyCreate() {
                 name="studyCount"
                 // rules={[{ required: true }]}
               >
-                <Select defaultValue={5} value={5} placeholder="5">
+                <Select value={5} placeholder="5">
                   <Select.Option value="5">5</Select.Option>
                 </Select>
               </Form.Item>

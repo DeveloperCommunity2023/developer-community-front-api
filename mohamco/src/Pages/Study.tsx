@@ -31,7 +31,6 @@ export function Study() {
     });
   };
 
-  console.log("res", data);
   return (
     <>
       <NavBar></NavBar>
@@ -64,7 +63,7 @@ export function Study() {
       <Row>
         {data &&
           data.map((x, idx) => (
-            <Col span={6}>
+            <Col span={6} key={idx}>
               <div
                 style={{
                   display: "flex",
