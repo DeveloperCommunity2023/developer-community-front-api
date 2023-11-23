@@ -1,7 +1,24 @@
-import { Button, Input, Row, Select } from "antd";
+import { Avatar, Button, Card, Col, Input, Row, Select } from "antd";
 import NavBar from "../components/NavBar";
+import Meta from "antd/es/card/Meta";
+import { BsFillPeopleFill } from "react-icons/bs";
+import { useState, useEffect } from "react";
+import { ProjectList } from "../Models/project.dto";
+import { getProject } from "../Modules/project.service";
 
 export function Project() {
+    const {Meta} = Card;
+    const [data, setData] = useState<ProjectList[]>([]);
+
+    const init = () => {
+        getProject().then((res)=> {
+            setData(res);
+        }).catch((err)=>console.log(err));
+    }
+
+    useEffect(()=>{
+        init();
+    }, []);
 
   return (
     <main >
@@ -28,8 +45,44 @@ export function Project() {
             </div>           
         </div>
         <Row>
-            
-        </Row>
+        {data &&
+          data.map((x, idx) => (
+            <Col span={6}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  padding: "20px",
+                }}
+              >
+                <Card
+                  style={{
+                    width: 300,
+                  }}
+                  cover={
+                    <img
+                      alt="example"
+                      src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+                    />
+                  }
+                >
+                  <Meta
+                    avatar={
+                      <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel" />
+                    }
+                    title={x.projectName}
+                    description={x.projectDesc}
+                  />
+                  <div>여기에 태그 넣고</div>
+                  <div style={{ textAlign: "right" }}>
+                    <BsFillPeopleFill></BsFillPeopleFill>
+                    {x.projectCount}
+                  </div>
+                </Card>
+              </div>
+            </Col>
+          ))}
+      </Row>
     </main>
   );
 }
