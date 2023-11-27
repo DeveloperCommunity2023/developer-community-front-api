@@ -31,76 +31,82 @@ export function Main() {
     <main>
       <Navbar></Navbar>
 
-      <Row>
-        {dataList.map((x) => (
-          <Col span={12}>
-            <div
-              style={{
-                padding: "15px",
-                backgroundColor: "#EAE4F5",
-                borderRadius: "10px",
-                width: "400px",
-              }}
-            >
-              <h4>
-                <strong>{x?.boardName}</strong>
-              </h4>
-            </div>
-            <List
-              itemLayout="horizontal"
-              style={{ width: "400px" }}
-              dataSource={x?.postList.filter((item, idx) => idx < 6)}
-              size="small"
-              pagination={false}
-              renderItem={(item, index) => (
-                <List.Item>
-                  <List.Item.Meta
-                    avatar={
-                      <Avatar
-                        src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`}
-                        size={"small"}
-                      />
-                    }
-                    title={
-                      <a
-                        style={{
-                          fontWeight: "bold",
-                          fontSize: "12px",
-                          textDecoration: "none",
-                        }}
-                        href="https://ant.design"
-                      >
-                        {item.userName}
-                        <span
+      <div
+        className="col-md-8 mx-auto max-w-10x1 px-4 flex justify-content-center"
+      >
+        <Row gutter={16}>
+          {dataList.map((x, idx) => (
+            // <div>
+            <Col span={12} key={idx} style={{marginBottom:'30px'}}>
+              <div
+                style={{
+                  padding: "12px",
+                  backgroundColor: "#EAE4F5",
+                  borderRadius: "10px",
+                  width: "400px",
+                }}
+              >
+                <h4>
+                  <strong>{x?.boardName}</strong>
+                </h4>
+              </div>
+              <List
+                itemLayout="horizontal"
+                style={{ width: "400px" }}
+                dataSource={x?.postList.filter((item, idx) => idx < 6)}
+                size="small"
+                pagination={false}
+                renderItem={(item, index) => (
+                  <List.Item key={item.postSeq}>
+                    <List.Item.Meta
+                      avatar={
+                        <Avatar
+                          src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`}
+                          size={"small"}
+                        />
+                      }
+                      title={
+                        <a
                           style={{
-                            float: "right",
+                            fontWeight: "bold",
+                            fontSize: "12px",
+                            textDecoration: "none",
+                          }}
+                          href="https://ant.design"
+                        >
+                          {item.userName}
+                          <span
+                            style={{
+                              float: "right",
+                            }}
+                          >
+                            <FaRegCommentDots />
+                            <div style={{ marginLeft: "2px" }}>
+                              {" "}
+                              {item.commentCount}
+                            </div>
+                          </span>
+                        </a>
+                      }
+                      description={
+                        <div
+                          style={{
+                            fontWeight: "500",
+                            color: "#707070",
                           }}
                         >
-                          <FaRegCommentDots />
-                          <text style={{ marginLeft: "2px" }}>
-                            {" "}
-                            {item.likeCount}
-                          </text>
-                        </span>
-                      </a>
-                    }
-                    description={
-                      <div
-                        style={{
-                          fontWeight: "500",
-                          color: "#707070",
-                        }}
-                      >
-                        {item.title}
-                      </div>
-                    }
-                  />
-                </List.Item>
-              )}
-            />
-          </Col>
-        ))}
-      </Row>
+                          {item.title}
+                        </div>
+                      }
+                    />
+                  </List.Item>
+                )}
+              />
+            </Col>
+            // </div>
+          ))}
+        </Row>
+      </div>
     </main>
   );
 }

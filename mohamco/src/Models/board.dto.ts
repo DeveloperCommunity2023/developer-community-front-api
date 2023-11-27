@@ -12,6 +12,7 @@ export interface PostList {
   createdDt: string;
   likeCount: number;
   viewCount: number;
+  commentCount: number;
 }
 
 export interface DataType {
@@ -23,7 +24,7 @@ export interface DataType {
   likeCount: number;
 }
 
-export interface ColimnType {
+export interface ColumnType {
   key: string;
   name: string;
   age: number;
@@ -31,11 +32,11 @@ export interface ColimnType {
   tags: string[];
 }
 
-export interface Post{
-  boardSeq: string,
-  title: string,
-  content: string,
-  noticeYn: number,
-  userSeq: number,
-  userName: string
+export interface Post {
+  boardSeq: string;
+  title: string;
+  content: string;
+  noticeYn: number;
+  userSeq: number;
+  userName: string;
 }

@@ -10,3 +10,12 @@ export interface StudyList {
   headerUrl: number;
   recruitYn: number;
 }
+
+export interface createData {
+  studySeq: number;
+  studyName: string;
+  studyDesc: string;
+  openYn: number;
+  recruitYn: number;
+  studyCount: number;
+}
