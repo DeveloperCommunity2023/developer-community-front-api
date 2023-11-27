@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/NavBar";
 import { Button, Input, Select, Table } from "antd";
 import type { ColumnsType } from "antd/es/table";
@@ -14,6 +14,8 @@ export function Board() {
 
   const { boardSeq } = useParams();
 
+  const navigate = useNavigate();
+  
   useEffect(() => {
     init();
   }, []);
@@ -101,7 +103,9 @@ export function Board() {
             justifyContent: "right",
           }}
         >
-          <Button type="primary">글쓰기</Button>
+          <Button type="primary" onClick={() => {
+            navigate("/board/write"); // 게시판 글쓰기 페이지로 이동
+          }}>글쓰기</Button>
         </div>
 
         <div

@@ -33,11 +33,11 @@ export function Main() {
 
       <div
         className="col-md-8 mx-auto max-w-10x1 px-4 flex justify-content-center"
-        style={{ maxWidth: "45%", minWidth: "300px" }}
       >
-        <Row>
+        <Row gutter={16}>
           {dataList.map((x, idx) => (
-            <Col span={12} key={idx}>
+            // <div>
+            <Col span={12} key={idx} style={{marginBottom:'30px'}}>
               <div
                 style={{
                   padding: "12px",
@@ -103,6 +103,7 @@ export function Main() {
                 )}
               />
             </Col>
+            // </div>
           ))}
         </Row>
       </div>
