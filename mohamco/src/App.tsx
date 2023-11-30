@@ -8,6 +8,7 @@ import { Project } from "./Pages/Project";
 import { Board } from "./Pages/Board";
 import { Profile } from "./Pages/Profile";
 import { BoardWrite } from "./Pages/BoardWrite";
+import { ProjectDetail } from "./Pages/ProjectDetail";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/study" element={<Study />} />
           <Route path="/study/create" element={<StudyCreate />} />
           <Route path="/project" element={<Project />} />
+          <Route path="/project/:projectSeq" element={<ProjectDetail />} />
           <Route path="/test" element={<Profile />} />
         </Routes>
       </Router>
