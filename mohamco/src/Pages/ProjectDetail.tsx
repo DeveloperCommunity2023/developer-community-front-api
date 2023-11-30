@@ -1,6 +1,6 @@
 import NavBar from "../components/NavBar";
 import test from "../src_assets/test.jpg";
-import test1 from "../src_assets/230913.png";
+import test2 from "../src_assets/test2.jpg";
 import styles from "../styles/Header.module.css";
 
 
@@ -12,7 +12,7 @@ export function ProjectDetail() {
             <NavBar></NavBar>
             <div className={styles.mainheader} style={{width: "100%"}}>
                 <div className={styles.header}>
-                    <img src={test1} ></img>
+                    <img src={test2} ></img>
                 </div>
                 <div className="align-self-center" style={{textAlign: "center"}}>
                     <div className="col-8">
