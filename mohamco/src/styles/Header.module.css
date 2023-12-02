@@ -1,0 +1,22 @@
+.mainheader {
+    text-align: -webkit-center;
+}
+.header {
+    background-color: #f6f1ff;;
+    writing-mode: vertical-lr;
+    overflow: hidden;
+    max-width: 1400px;
+    min-height: 100px;
+    width: 100%;
+    height: 300px;
+    
+}
+.header img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+.headerBody {
+    column-width: 12em;
+    
+}
