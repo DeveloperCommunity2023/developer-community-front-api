@@ -1,4 +1,5 @@
 export interface StudyDto {
+  count: number;
   studyList: StudyList[];
 }
 export interface StudyList {
