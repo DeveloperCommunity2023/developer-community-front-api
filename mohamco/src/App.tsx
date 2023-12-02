@@ -7,6 +7,8 @@ import { Study } from "./Pages/Study";
 import { Board } from "./Pages/Board";
 import { Profile } from "./Pages/Profile";
 import { BoardWrite } from "./Pages/BoardWrite";
+import { StudyRegister } from "./Pages/StudyRegister";
+import { StudyRecruit } from "./Pages/StudyRecruit";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/board/write" element={<BoardWrite />} />
           <Route path="/study" element={<Study />} />
           <Route path="/study/create" element={<StudyCreate />} />
+          <Route path="/study/register" element={<StudyRegister />} />
+          <Route path="/study/recruit" element={<StudyRecruit />} />
           <Route path="/test" element={<Profile />} />
         </Routes>
       </Router>

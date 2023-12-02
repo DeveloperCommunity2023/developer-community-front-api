@@ -12,12 +12,12 @@ import {
 } from "antd";
 import { useEffect, useState } from "react";
 import { getStudy } from "../Modules/study.service";
-import { StudyList } from "../Models/stydy.dto";
+import { StudyDto, StudyList } from "../Models/stydy.dto";
 import { useNavigate } from "react-router-dom";
 
 export function Study() {
   const { Meta } = Card;
-  const [data, setData] = useState<StudyList[]>([]);
+  const [data, setData] = useState<StudyDto>();
 
   const navigate = useNavigate();
 
@@ -70,7 +70,7 @@ export function Study() {
                 borderTopLeftRadius: 0,
                 borderBottomLeftRadius: 0,
                 marginLeft: "-5px",
-                backgroundColor: "#797383",
+                backgroundColor: "#8f7dad",
               }}
             >
               검색
@@ -78,8 +78,8 @@ export function Study() {
           </div>
         </div>
         <Row>
-          {data &&
-            data.map((x, idx) => (
+          {data?.studyList &&
+            data.studyList.map((x, idx) => (
               <Col span={8} key={idx}>
                 <div
                   style={{
@@ -94,6 +94,10 @@ export function Study() {
                     }}
                     cover={
                       <img
+                        style={{
+                          height: 150,
+                          // borderRadius: 0
+                        }}
                         alt="example"
                         src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
                       />
@@ -124,12 +128,16 @@ export function Study() {
             marginBottom: 10,
           }}
         >
-          <Pagination defaultCurrent={1} />
+          <Pagination
+            defaultCurrent={1}
+            total={data?.count}
+            defaultPageSize={9}
+          />
           <Button
             style={{
               position: "absolute",
               right: "20%",
-              backgroundColor: "#797383",
+              backgroundColor: "#8f7dad",
             }}
             type="primary"
             onClick={() => {

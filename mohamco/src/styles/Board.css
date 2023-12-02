@@ -1,0 +1,17 @@
+.ant-select-selection {
+  color: #c2b2dd;
+}
+.ant-select-selector {
+  background-color: #c2b2dd;
+}
+.ant-table
+  .ant-table-container
+  .ant-table-content
+  table
+  thead.ant-table-thead
+  .ant-table-cell {
+  border-radius: 0;
+  background-color: white;
+  border-top: 2px solid #c2b2dd;
+  border-bottom: 2px solid #c2b2dd;
+}
