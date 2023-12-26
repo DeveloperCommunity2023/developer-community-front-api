@@ -1,4 +1,5 @@
 export interface StudyDto {
+  count: number;
   studyList: StudyList[];
 }
 export interface StudyList {
@@ -9,4 +10,13 @@ export interface StudyList {
   profileUrl: string;
   headerUrl: number;
   recruitYn: number;
+}
+
+export interface createData {
+  studySeq: number;
+  studyName: string;
+  studyDesc: string;
+  openYn: number;
+  recruitYn: number;
+  studyCount: number;
 }

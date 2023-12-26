@@ -1,0 +1,15 @@
+.name {
+    max-width: 1400px;
+    width: 100%
+}
+.rectangle {
+    width: 80px;
+    height: 30px;
+    border: 2px solid rgb(127, 96, 156);
+    border-radius: 10px;
+    text-align: center;
+    
+}
+.infoCard {
+    border: 2px solid black;
+}

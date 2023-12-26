@@ -21,8 +21,8 @@ const NavBar = () => {
     //회원가입 버튼 클릭 이벤트
   }
 
-  const menuList = menus.map((menu) => (
-    <li>
+  const menuList = menus.map((menu, idx) => (
+    <li key={idx}>
       <a href={`${menu.link}`} className="nav-link px-3">
         <span className="menu">{menu.boardName}</span>
       </a>

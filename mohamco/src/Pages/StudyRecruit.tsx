@@ -4,8 +4,8 @@ import { Button, Form, Input, Radio, RadioChangeEvent, Select } from "antd";
 import { studyCreate } from "../Modules/study.service";
 import { useNavigate } from "react-router-dom";
 
-// 스터디모임 생성 페이지
-export function StudyCreate() {
+// 스터디모임 가입 페이지
+export function StudyRecruit() {
   const [form] = Form.useForm();
   const { TextArea } = Input;
   const [openValue, setOpenValue] = useState(1);
@@ -39,10 +39,10 @@ export function StudyCreate() {
 
       <div className="col-md-8 mx-auto max-w-10x1 px-4 flex justify-content-center">
         <h4>
-          <strong>스터디 생성하기</strong>
+          <strong>스터디 모집하기</strong>
         </h4>
         <div style={{ color: "gray", fontSize: "14px" }}>
-          스터디 생성을 위한 정보를 입력해주세요
+          스터디 모집을 위한 정보를 입력해주세요
         </div>
 
         {/* <div
@@ -87,8 +87,8 @@ export function StudyCreate() {
               <TextArea rows={2} placeholder="스터디 설명을 입력해주세요." />
             </Form.Item>
             <Form.Item
-              label="공개 설정"
-              name="openYn"
+              label="모집 종류"
+              name="recruitYn"
               rules={[{ required: true }]}
             >
               <Radio.Group
@@ -96,8 +96,8 @@ export function StudyCreate() {
                 defaultValue={openValue}
                 value={openValue}
               >
-                <Radio value={1}> 공개 </Radio>
-                <Radio value={0}> 비공개 </Radio>
+                <Radio value={1}> 상시 모집 </Radio>
+                <Radio value={0}> 기간 모집 </Radio>
               </Radio.Group>
             </Form.Item>
 
@@ -117,7 +117,7 @@ export function StudyCreate() {
             </Form.Item>
 
             <Form.Item
-              label="스터디 인원"
+              label="모집 인원"
               name="studyCount"
               // rules={[{ required: true }]}
             >
@@ -127,6 +127,16 @@ export function StudyCreate() {
             <Form.Item label="검색어 태그" name="tag">
               <div style={{ display: "inline-flex" }}>
                 <Input style={{ marginRight: "10px" }} />
+                <Button type="primary">등록</Button>
+              </div>
+            </Form.Item>
+
+            <Form.Item label="가입 질문" name="question">
+              <div style={{ display: "flex" }}>
+                <Input
+                  style={{ marginRight: "10px" }}
+                  placeholder="가입 질문을 입력해주세요."
+                ></Input>
                 <Button type="primary">등록</Button>
               </div>
             </Form.Item>
